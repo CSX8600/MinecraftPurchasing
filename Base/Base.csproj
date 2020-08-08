@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0784AD76-4A1F-4B28-9FE9-90C006ECBA82}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClussPro.Base</RootNamespace>
+    <AssemblyName>Base</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseConfig.cs" />
+    <Compile Include="Data\Conditions\ConditionGroup.cs" />
+    <Compile Include="Data\Conditions\ICondition.cs" />
+    <Compile Include="Data\Conditions\Condition.cs" />
+    <Compile Include="Data\FieldSpecification.cs" />
+    <Compile Include="Data\Join.cs" />
+    <Compile Include="Data\Operand\CSV.cs" />
+    <Compile Include="Data\Operand\Field.cs" />
+    <Compile Include="Data\Operand\IOperand.cs" />
+    <Compile Include="Data\FieldValue.cs" />
+    <Compile Include="Data\Operand\Literal.cs" />
+    <Compile Include="Data\Query\IAlterTable.cs" />
+    <Compile Include="Data\Query\ICreateSchema.cs" />
+    <Compile Include="Data\Query\ICreateTable.cs" />
+    <Compile Include="Data\Query\IDeleteQuery.cs" />
+    <Compile Include="Data\Query\IDropSchema.cs" />
+    <Compile Include="Data\Query\IDropTable.cs" />
+    <Compile Include="Data\Query\IInsertQuery.cs" />
+    <Compile Include="Data\Query\ISelectQuery.cs" />
+    <Compile Include="Data\ISQLProvider.cs" />
+    <Compile Include="Data\Query\ITransaction.cs" />
+    <Compile Include="Data\Query\IUpdateQuery.cs" />
+    <Compile Include="Data\Query\Select.cs" />
+    <Compile Include="Data\SQLProviderFactory.cs" />
+    <Compile Include="Data\Table.cs" />
+    <Compile Include="Extensions\DictionaryExt.cs" />
+    <Compile Include="Extensions\HashSetExt.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BaseConfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

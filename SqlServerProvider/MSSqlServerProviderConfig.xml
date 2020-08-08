@@ -1,0 +1,3 @@
+﻿<MSSqlServerProviderConfig>
+  <ConnectionString>[connection string here]</ConnectionString>
+</MSSqlServerProviderConfig>
