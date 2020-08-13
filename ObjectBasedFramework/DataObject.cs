@@ -13,7 +13,7 @@ using ClussPro.ObjectBasedFramework.Validation;
 
 namespace ClussPro.ObjectBasedFramework
 {
-    public class DataObject : IErrorContainer
+    public class DataObject
     {
         private bool isEditable;
         private bool isInsert;

@@ -24,7 +24,7 @@ namespace ClussPro.SqlServerProvider.ScriptWriters
 
             if (operand is CSV)
             {
-
+                return WriteCSV((CSV)operand, parameters);
             }
 
             throw new InvalidCastException("Could not determine IOperand type for writing");

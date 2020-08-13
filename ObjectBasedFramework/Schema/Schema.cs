@@ -1,5 +1,6 @@
 ﻿using ClussPro.Base.Data;
 using ClussPro.Base.Data.Query;
+using ClussPro.Base.Extensions;
 using ClussPro.ObjectBasedFramework.Schema.Attributes;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace ClussPro.ObjectBasedFramework.Schema
 
         private List<SchemaObject> schemaObjects = new List<SchemaObject>();
         private Dictionary<Type, SchemaObject> schemaObjectsByType = new Dictionary<Type, SchemaObject>();
+        private Dictionary<string, Dictionary<string, SchemaObject>> schemaObjectsBySchemaObjectNames = new Dictionary<string, Dictionary<string, SchemaObject>>();
 
         private Schema()
         {
@@ -37,6 +39,7 @@ namespace ClussPro.ObjectBasedFramework.Schema
 
                 schemaObjects.Add(newSchemaObject);
                 schemaObjectsByType.Add(type, newSchemaObject);
+                schemaObjectsBySchemaObjectNames.GetOrSet(newSchemaObject.SchemaName, () => new Dictionary<string, SchemaObject>()).GetOrSet(newSchemaObject.ObjectName, () => newSchemaObject);
             }
 
             foreach(SchemaObject schemaObject in schemaObjects)
@@ -62,6 +65,21 @@ namespace ClussPro.ObjectBasedFramework.Schema
             }
 
             return Instance.schemaObjectsByType[type];
+        }
+
+        public static SchemaObject GetSchemaObject(string schema, string objectName)
+        {
+            if (!Instance.schemaObjectsBySchemaObjectNames.ContainsKey(schema))
+            {
+                return null;
+            }
+
+            if (!Instance.schemaObjectsBySchemaObjectNames[schema].ContainsKey(objectName))
+            {
+                return null;
+            }
+
+            return Instance.schemaObjectsBySchemaObjectNames[schema][objectName];
         }
 
         public static void Deploy()

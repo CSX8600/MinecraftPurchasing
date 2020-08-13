@@ -62,8 +62,8 @@
     <Compile Include="Validation\Conditions\ObjectExpression.cs" />
     <Compile Include="Validation\Error.cs" />
     <Compile Include="Validation\Errors.cs" />
-    <Compile Include="Validation\IErrorContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\IValidationDefinition.cs" />
     <Compile Include="Validation\ValidationRule.cs" />
     <Compile Include="Validation\Validator.cs" />
   </ItemGroup>

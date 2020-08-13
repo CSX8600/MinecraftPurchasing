@@ -9,16 +9,16 @@ namespace ClussPro.ObjectBasedFramework.Validation
         public string Message { get; set; }
         public Conditions.Condition Condition { get; set; }
 
-        public abstract bool Evaluate(object objectToValidate);
+        public abstract bool Evaluate(DataObject objectToValidate);
     }
 
     public class ValidationRule<T> : ValidationRule where T : DataObject
     {
-        public override bool Evaluate(object objectToValidate)
+        public override bool Evaluate(DataObject objectToValidate)
         {
             if (!(objectToValidate is T))
             {
-                throw new InvalidCastException("Expected type of " + typeof(IErrorContainer).Name + " during validation, got " + objectToValidate.GetType().Name);
+                throw new InvalidCastException("Expected type of " + typeof(T).Name + " during validation, got " + objectToValidate.GetType().Name);
             }
 
             T theObject = (T)objectToValidate;

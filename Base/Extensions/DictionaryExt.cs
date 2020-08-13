@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ClussPro.Base.Extensions
 {
@@ -12,6 +13,16 @@ namespace ClussPro.Base.Extensions
             }
 
             return defaultValue;
+        }
+
+        public static TValue GetOrSet<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, Func<TValue> ctor)
+        {
+            if (!dictionary.ContainsKey(key))
+            {
+                dictionary.Add(key, ctor());
+            }
+
+            return dictionary[key];
         }
     }
 }

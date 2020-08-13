@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClussPro.ObjectBasedFramework.Validation.Conditions
 {
-    public class ObjectExpression<T> : Expression where T:IErrorContainer
+    public class ObjectExpression<T> : Expression where T:DataObject
     {
         private string field;
         public ObjectExpression(string field)
